@@ -5,9 +5,16 @@ using System.Linq;
 
 public class HauptMenü
 {
-    private BenutzerViewModel _benutzerViewModel = new BenutzerViewModel();
-    private BestellungenViewModel _bestellungenViewModel = new BestellungenViewModel();
-    private StatistikenViewModel _statistikenViewModel = new StatistikenViewModel();
+    private readonly BenutzerViewModel _benutzerViewModel;
+    private readonly BestellungenViewModel _bestellungenViewModel;
+    private readonly StatistikenViewModel _statistikenViewModel;
+
+    public HauptMenü(DatabaseHelper dbHelper)
+    {
+        _benutzerViewModel = new BenutzerViewModel(dbHelper);
+        _bestellungenViewModel = new BestellungenViewModel(dbHelper);
+        _statistikenViewModel = new StatistikenViewModel(dbHelper);
+    }
 
     public void Start()
     {
